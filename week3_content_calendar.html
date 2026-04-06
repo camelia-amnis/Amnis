@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amnis Finance & CEO Content Calendar</title>
+<meta name="description" content="Strategic content calendar with browser-based X drafts." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Ultra-Premium Light Theme Colors */
+    --bg-base: #f4f6fc;
+    --bg-surface: #ffffff;
+    --bg-inset: #f8fafc;
+    
+    --border-light: rgba(15, 23, 42, 0.06);
+    --border-strong: rgba(15, 23, 42, 0.12);
+    --border-hover: rgba(2, 132, 199, 0.3);
+    
+    --amnis-primary: #0284c7;  
+    --amnis-gradient: linear-gradient(135deg, #0ea5e9, #0284c7);
+    --ceo-primary: #ea580c;
+    --ceo-gradient: linear-gradient(135deg, #f97316, #ea580c);
+    
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-light: #64748b;
+    
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.04);
+    --shadow-hover: 0 20px 40px rgba(2,132,199,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Abstract background shapes */
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: 
+      radial-gradient(ellipse at 15% 10%, rgba(14,165,233,0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 85% 85%, rgba(249,115,22,0.05) 0%, transparent 40%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ── HEADER ── */
+  header { padding: 60px 0 40px; margin-bottom: 24px; text-align: center; }
+  
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: 100px; padding: 8px 16px; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); letter-spacing: 0.05em;
+  }
+  
+  .pulse { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 rgba(16,185,129,.4); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,.4); } 70% { box-shadow: 0 0 0 6px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  
+  header h1 { font-size: 42px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; letter-spacing: -0.03em; }
+  header p { color: var(--text-muted); max-width: 580px; margin: 0 auto; line-height: 1.7; font-size: 16px; }
+
+  /* ── METRICS DASHBOARD ── */
+  .metrics-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .metric-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 24px 20px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--mc-color, var(--border-strong));
+  }
+
+  .metric-card:nth-child(1) { --mc-color: #3b82f6; }
+  .metric-card:nth-child(2) { --mc-color: #8b5cf6; }
+  .metric-card:nth-child(3) { --mc-color: #10b981; }
+  .metric-card:nth-child(4) { --mc-color: var(--amnis-primary); }
+  .metric-card:nth-child(5) { --mc-color: var(--ceo-primary); }
+
+  .metric-title { font-size: 12px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .metric-value { font-size: 28px; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
+  .metric-subtitle { font-size: 12px; color: var(--text-light); margin-top: 6px; font-weight: 500; }
+  .metric-link { color: var(--amnis-primary); text-decoration: none; font-weight: 600; }
+  .metric-link:hover { text-decoration: underline; }
+
+  /* ── LAYOUT ── */
+  .boards-wrapper { display: flex; gap: 40px; align-items: flex-start; }
+  .board { flex: 1; min-width: 0; }
+  
+  .board-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border-light); }
+  .board-title { font-size: 20px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+  .board-badge { font-size: 12px; font-weight: 700; background: var(--bg-surface); padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border-light); box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+
+  /* ── CARDS ── */
+  .cards-list { display: flex; flex-direction: column; gap: 24px; padding-bottom: 60px; }
+  
+  .post-card {
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: 20px; padding: 28px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-soft); position: relative;
+  }
+  
+  .post-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+
+  .post-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 12px;}
+  .post-title { font-size: 17px; font-weight: 800; color: var(--text-main); letter-spacing: -0.01em; }
+  
+  .post-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-tag { background: var(--bg-inset); border: 1px solid var(--border-strong); padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; }
+
+  .post-media {
+    background: var(--bg-inset); border: 1px dashed var(--border-strong);
+    border-radius: 12px; padding: 14px 18px; font-size: 13px; color: var(--amnis-primary);
+    font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; line-height: 1.5;
+  }
+  
+  .post-content {
+    background: var(--bg-inset); border-radius: 12px; padding: 20px;
+    font-size: 14px; line-height: 1.6; color: var(--text-muted);
+    white-space: pre-wrap; margin-bottom: 20px; border: 1px solid var(--border-light);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .post-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; gap: 12px; flex-wrap: wrap; }
+
+  .best-time {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--text-light);
+    background: var(--bg-base); padding: 6px 12px; border-radius: 100px;
+  }
+
+  .best-time svg { width: 14px; height: 14px; opacity: 0.8; }
+
+  .footer-actions { display: flex; gap: 10px; }
+
+  .btn { 
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; 
+    padding: 10px 18px; border-radius: 10px; cursor: pointer; transition: all 0.2s; 
+    border: none; font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  .btn-copy { background: #ffffff; border: 1px solid var(--border-strong); color: var(--text-muted); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .btn-copy:hover { color: var(--text-main); border-color: var(--text-main); background: var(--bg-inset); }
+  
+  .btn-draft { background: #0f1419; color: #fff; text-decoration: none; box-shadow: 0 4px 12px rgba(15,20,25,0.15); }
+  .btn-draft:hover { background: #272c30; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,20,25,0.2); }
+  .btn-draft svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* ── FEEDBACK SECTION ── */
+  .feedback-wrapper {
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: 20px; padding: 40px; margin-bottom: 80px; box-shadow: var(--shadow-soft);
+  }
+  
+  .feedback-header { margin-bottom: 24px; }
+  .feedback-header h2 { font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .feedback-header p { font-size: 14px; color: var(--text-light); }
+
+  .feedback-input {
+    width: 100%; min-height: 120px; padding: 16px; border-radius: 12px;
+    border: 1px solid var(--border-strong); background: var(--bg-inset);
+    color: var(--text-main); font-family: 'Inter', sans-serif; font-size: 14px;
+    resize: vertical; outline: none; margin-bottom: 16px; transition: border-color 0.2s; line-height: 1.6;
+  }
+  
+  .feedback-input:focus { border-color: var(--amnis-primary); }
+
+  .btn-primary { background: var(--amnis-gradient); color: #fff; box-shadow: 0 4px 12px rgba(2,132,199,0.2); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(2,132,199,0.3); }
+
+  .notes-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  
+  .note-item {
+    background: var(--bg-inset); border: 1px solid var(--border-light);
+    border-radius: 12px; padding: 16px; display: flex; align-items: flex-start; gap: 16px;
+  }
+  
+  .note-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: rgba(2,132,199,0.1);
+    color: var(--amnis-primary); display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  
+  .note-content { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .note-time { font-size: 11px; color: var(--text-light); font-weight: 600; margin-top: 6px; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 30px; right: 30px; background: #0f172a;
+    border: none; border-radius: 12px; padding: 16px 24px;
+    font-size: 14px; font-weight: 600; color: #fff; transform: translateY(80px);
+    opacity: 0; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media(max-width: 900px) {
+    .boards-wrapper { flex-direction: column; }
+    .board { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">✓ Copied to clipboard</div>
+
+<div class="container">
+  <header>
+    <div class="header-badge"><div class="pulse"></div> Live On-Chain Intelligence</div>
+    <h1>Content Strategy Hub</h1>
+    <p>A unified interface for Amnis Finance's 7-Day campaign cycle. Track vital on-chain metrics alongside optimized drafts ready for X deployment.</p>
+  </header>
+
+  <!-- METRICS DASHBOARD -->
+  <div class="metrics-dashboard">
+    <div class="metric-card">
+      <div class="metric-title">Total Value Locked</div>
+      <div class="metric-value">$27.1M+</div>
+      <div class="metric-subtitle">25.72M APT staked natively</div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Active Wallets</div>
+      <div class="metric-value">461,021</div>
+      <div class="metric-subtitle">Total Ecosystem Users</div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Current Yield</div>
+      <div class="metric-value">3.01%</div>
+      <div class="metric-subtitle">Base APR safely maintained</div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Brand Force</div>
+      <div class="metric-value">110.4K</div>
+      <div class="metric-subtitle"><a href="https://x.com/AmnisFinance" target="_blank" class="metric-link">@AmnisFinance</a></div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Leadership</div>
+      <div class="metric-value">14.2K</div>
+      <div class="metric-subtitle"><a href="https://x.com/eric_amnis" target="_blank" class="metric-link" style="color: var(--ceo-primary);">@eric_amnis</a></div>
+    </div>
+  </div>
+
+  <div class="boards-wrapper">
+    <!-- AMNIS BOARD -->
+    <div class="board board-amnis">
+      <div class="board-header">
+        <div class="board-title">🐉 Amnis Finance</div>
+        <div class="board-badge" style="color: var(--amnis-primary)">7 Posts • Daily</div>
+      </div>
+      <div class="cards-list" id="amnisList"></div>
+    </div>
+
+    <!-- CEO BOARD -->
+    <div class="board board-ceo">
+      <div class="board-header">
+        <div class="board-title">👤 CEO Account</div>
+        <div class="board-badge" style="color: var(--ceo-primary)">4 Posts • Weekly</div>
+      </div>
+      <div class="cards-list" id="ceoList"></div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK SECTION -->
+  <div class="feedback-wrapper">
+    <div class="feedback-header">
+      <h2>Team Notes & Strategy Feedback</h2>
+      <p>Drop your comments, edits, or timing suggestions below. Notes will be saved locally for the current session.</p>
+    </div>
+    <textarea class="feedback-input" id="feedbackInput" placeholder="E.g. Let's switch Day 3's APR image to heavily feature the Aries logo as well..."></textarea>
+    <div>
+      <button class="btn btn-primary" onclick="addNote()">✍️ Save Note</button>
+    </div>
+    
+    <div class="notes-list" id="notesList">
+      <!-- Notes generated via JS -->
+    </div>
+  </div>
+
+</div>
+
+<script>
+const timeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+const xIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.968H5.078z"></path></svg>`;
+
+const AMNIS_POSTS = [
+  { day: "Day 1", time: "09:00 AM UTC", type: "Mascot", title: "The Draconian's Yield Strategy", media: "📸 Highly detailed 3D cartoon render of the Amnis Draconian wearing sleek cyberpunk glasses, analyzing a glowing holographic trading chart. Professional but slightly humorous.", body: "Even a Draconian sleeps, but your yields shouldn't. 🐉\\n\\nWhile traditional staking traps your liquidity, holding amAPT means your collateral is 100% fluid to trade, lend, or loop. \\n\\nThe smartest wallets on @Aptos know the flow. 💧\\n\\nStake now: https://stake.amnis.finance/\\n#Aptos #AmnisFinance" },
+  { day: "Day 2", time: "01:30 PM UTC", type: "Educational", title: "Native vs Liquid Staking", media: "📸 Split screen 3D render. Left: A heavy, rusted iron vault with an Aptos coin locked. Right: Glowing stream of liquid cyan energy flowing through a network.", body: "Why are most stakers underperforming the market? 🧵\\n\\nNative staking gives you a baseline yield, but freezes your capital. It's a massive opportunity cost in a fast-moving market like Aptos.\\n\\nLiquid staking with Amnis instantly unfreezes it via amAPT.\\n\\nStake $APT 👉 receive amAPT instantly 👉 deploy amAPT in DeFi to multiply your yield. \\nDon't let capital sit idle.\\n\\nLearn how: https://amnis.finance/" },
+  { day: "Day 3", time: "10:00 AM UTC", type: "APR Update", title: "Base APY + Yield Stacking", media: "📸 A sleek, glowing 3D dashboard displaying '3.01% Base APR' and '$27.1M TVL' in bright cyan neon against a clean slate setting.", body: "Protocol Update 📊\\n\\nWe just secured 3.01% base APR for amAPT holders. But that's just layer one.\\n\\nMint amAPT today, and deploy it across our ecosystem partners like @AriesMarkets or @CellanaFinance to unlock stacked yields of up to 20%+.\\n\\nLiquidity is king. 👑\\n\\nStack your yield: https://stake.amnis.finance/" },
+  { day: "Day 4", time: "02:00 PM UTC", type: "Mascot", title: "Rock-Solid Peg", media: "📸 The 3D Draconian character standing firmly, holding a massive, shiny silver shield reflecting heavy cyan light. Text '0.9949 PEG' glowing on the shield.", body: "Market red? Our Draconian remains steadfast. 🛡️\\n\\nNo matter the volatility, the amAPT/APT peg continues to stand rock solid at 0.9949.\\n\\nYou can't confidently layer your yield if your base asset is constantly depegging.\\n\\nStay stable. Stay profitable.\\n\\nLink: https://stake.amnis.finance/ 🐉" },
+  { day: "Day 5", time: "09:30 AM UTC", type: "Educational", title: "Zero Lockups", media: "📸 A heavy silver padlock completely shattered, releasing a bright glowing stream of cyan fluid into space. Clean corporate aesthetic.", body: "Zero lockups. 0.\\n\\nWhen we say 'Liquid Staking', we mean 100% fluid capital with absolutely zero traps.\\n\\nCEXs and native staking force you into unbonding periods. With Amnis, you bypass the waiting game.\\n\\nStake. Receive amAPT. Deploy.\\nImmediate utility. ⚡\\n\\nhttps://stake.amnis.finance/" },
+  { day: "Day 6", time: "03:00 PM UTC", type: "APR Update", title: "Protocol Milestones", media: "📸 Macro shot of a complex sci-fi motherboard with a glowing path labeled 'Amnis Finance' lighting up the entire surrounding circuitry.", body: "Amnis Finance By The Numbers:\\n\\n🔷 25.7M+ APT actively staked\\n💰 $27.1M+ Total Value Locked\\n👥 461,000+ Active Wallets\\n💵 $814k+ Annualized Protocol Fees\\n\\nThe momentum isn't stopping. If you're holding idle APT, you are leaving alpha on the table.\\n\\nJoin the flow: https://stake.amnis.finance/ 🌊" },
+  { day: "Day 7", time: "11:00 AM UTC", type: "Mascot / Educational", title: "AI Agents Choose amAPT", media: "📸 A sleek robotic Draconian hand interacting with a glowing liquidity pool. Cyberpunk meets clean DeFi aesthetics.", body: "Why are autonomous AI agents choosing amAPT as their preferred collateral? 🤖\\n\\nBecause bots don't care about narratives. They care about:\\n1️⃣ 1:1 Peg reliability\\n2️⃣ Instant liquidity\\n3️⃣ Native yield accrual\\n\\namAPT checks every box. If bots trust it, shouldn't your portfolio?\\n\\nJoin the smart money: https://stake.amnis.finance/ 💧" }
+];
+
+const CEO_POSTS = [
+  { time: "10:30 AM UTC", theme: "Narrative / Vision", title: "The Institutional L1", media: "📸 Photo of CEO at a high-level crypto conference, or a sleek corporate graphic of Aptos bridging traditional finance.", body: "By the end of 2026, Aptos will be the undisputed settlement layer for institutional DeFi. \\n\\nThe arrival of RWAs and secure stablecoin frameworks makes it inevitable.\\n\\nInstitutions demand throughput (160k TPS), safety (Move language), and real yield (audited LSTs like amAPT).\\n\\nWe are building the trust layer for this exact transition. The next 12 months will be defining. 🐉" },
+  { time: "01:00 PM UTC", theme: "Commentary", title: "Gas Efficiency vs Resilience", media: "📸 Clean text-based infographic showing Move resource model security vs EVM approach.", body: "2025 taught builders a harsh lesson: Gas efficiency without resilience is a liability.\\n\\nWatching chains optimize for sub-cent fees while their protocols got drained was a masterclass in what NOT to do.\\n\\nAt Amnis, our philosophy has always been:\\nResilience first. Throughput second.\\n\\nThe Move resource model gives us true code-level ownership semantics. That's why $27M sleeps safely on our contracts. 🔐" },
+  { time: "04:00 PM UTC", theme: "Commentary", title: "The LST Yield Stack", media: "📸 Screenshot of Aries Markets & Cellana Finance APYs paired with Amnis Base APY.", body: "The DeFi meta has completely shifted from 'Pure Staking' to 'LST-Layered Yield'.\\n\\nIf you are just natively staking, you're competing in a single-layer yield game.\\n\\nWith an LST: \\nYou earn the base yield (3.01%) AND you deploy the asset on lending markets to multiply the returns.\\n\\nLiquid collateral is the ultimate capital unlock. Don't trap your liquidity." },
+  { time: "08:00 AM UTC", theme: "Engagement", title: "The Road to 1M Stakers", media: "📸 Current Amnis sleek dashboard showing 461K wallets milestone.", body: "We officially crossed 461,000 active stakers on Amnis Finance.\\n\\nMy personal milestone is 1,000,000.\\n\\nGetting there isn't a growth hack problem. It's an educational problem. Most retail users still don't understand the power of unlocking liquidity from staked assets.\\n\\nIf you're not utilizing liquid staking yet — what is holding you back? Genuinely asking. Drop your concerns below 👇" }
+];
+
+function renderBoard(elementId, postsData, isAmnis) {
+  const container = document.getElementById(elementId);
+  container.innerHTML = postsData.map((post, idx) => {
+    
+    // Prepare Web Intent URL
+    const tweetText = encodeURIComponent(post.body.replace(/\\n/g, '\n'));
+    const intentUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
+
+    return `
+      <div class="post-card">
+        <div class="post-header">
+          <div class="post-title">${post.title}</div>
+        </div>
+        <div class="post-meta">
+          ${isAmnis ? `<span class="meta-tag">📅 ${post.day}</span>` : ''}
+          <span class="meta-tag">🏷️ ${isAmnis ? post.type : post.theme}</span>
+        </div>
+        ${post.media ? `<div class="post-media">${post.media}</div>` : ''}
+        <div class="post-content">${post.body.replace(/\\n/g, '<br>')}</div>
+        <div class="post-footer">
+          <div class="best-time" title="Suggested post time based on engagement data">
+            ${timeIcon}
+            ${post.time}
+          </div>
+          <div class="footer-actions">
+            <button class="btn btn-copy" onclick="copyText(this)">📋 Copy</button>
+            <a href="${intentUrl}" target="_blank" class="btn btn-draft" title="Opens Twitter compose window">
+              ${xIcon} Draft on X
+            </a>
+          </div>
+        </div>
+        <!-- Hidden div for copying -->
+        <div class="raw-text" style="display:none;">${post.body.replace(/\\n/g, '\n')}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function copyText(btn) {
+  const rawText = btn.parentElement.parentElement.querySelector('.raw-text').innerText;
+  navigator.clipboard.writeText(rawText).then(() => {
+    const t = document.getElementById('toast');
+    t.innerText = "✓ Content copied to clipboard";
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  });
+}
+
+// ── Feedback Notes Logic
+const notesStore = [];
+function addNote() {
+  const input = document.getElementById('feedbackInput');
+  const text = input.value.trim();
+  if(!text) return;
+  
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  const dateString = now.toLocaleDateString([], {month: 'short', day: 'numeric'});
+
+  notesStore.unshift({ text, time: `${dateString} at ${timeString}` });
+  input.value = '';
+  renderNotes();
+  
+  const t = document.getElementById('toast');
+  t.innerText = "✓ Note successfully saved";
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function renderNotes() {
+  const container = document.getElementById('notesList');
+  if (notesStore.length === 0) {
+    container.innerHTML = ``;
+    return;
+  }
+  
+  container.innerHTML = notesStore.map(note => `
+    <div class="note-item">
+      <div class="note-icon">📝</div>
+      <div>
+        <div class="note-content">${note.text}</div>
+        <div class="note-time">${note.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Init
+renderBoard('amnisList', AMNIS_POSTS, true);
+renderBoard('ceoList', CEO_POSTS, false);
+renderNotes();
+
+</script>
+</body>
+</html>
